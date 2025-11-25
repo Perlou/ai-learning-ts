@@ -102,8 +102,15 @@ npx tsx src/14-ollama-function-calling.ts
 
 一个现代化的、基于 Next.js 的聊天应用，支持流式输出。
 
+**在线演示**: [https://webchat-rho-nine.vercel.app/](https://webchat-rho-nine.vercel.app/)
+
+**独立仓库**: [web-chat](https://github.com/Perlou/web-chat)
+
+本地运行：
+
 ```bash
 cd web-chat
+npm install
 npm run dev
 ```
 
