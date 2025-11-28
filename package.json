@@ -4,7 +4,14 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "phase1": "tsx src/phase-1-2-llm-basics",
+    "phase2": "tsx src/phase-3-embeddings-rag",
+    "phase3": "tsx src/phase-4-agents",
+    "phase4": "tsx src/phase-5-local-models",
+    "phase5": "tsx src/phase-6-advanced-rag",
+    "hello": "tsx src/phase-1-2-llm-basics/01-hello-gemini.ts",
+    "chat": "tsx src/phase-1-2-llm-basics/02-chatbot.ts"
   },
   "keywords": [],
   "author": "",
@@ -12,9 +19,12 @@
   "description": "",
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
+    "@lancedb/lancedb": "^0.22.3",
     "@types/node": "^24.10.1",
+    "apache-arrow": "^18.1.0",
     "dotenv": "^17.2.3",
     "openai": "^6.9.1",
+    "pdf-parse": "^2.4.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },

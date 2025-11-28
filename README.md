@@ -8,116 +8,121 @@
 
 确保你已经安装了 Node.js，并且配置了 `.env` 文件（填入你的 `GEMINI_API_KEY`）。
 
-### 2. 运行示例代码
+### 2. 按阶段学习
 
 我们使用 `tsx` 来直接运行 TypeScript 代码，无需编译。
 
-#### 示例 1: Hello World
+所有代码已按学习阶段组织，详见下方 [🎓 按阶段学习](#-按阶段学习) 部分。
 
-测试 API 是否通畅，模型是否能回复。
-
-```bash
-npx tsx src/01-hello-gemini.ts
-```
-
-#### 示例 2: CLI 聊天机器人
-
-一个能记住上下文的终端聊天程序。
+快速开始：
 
 ```bash
-npx tsx src/02-chatbot.ts
+# 第一个示例：Hello World
+npx tsx src/phase-1-2-llm-basics/01-hello-gemini.ts
+
+# 聊天机器人（输入 exit 退出）
+npx tsx src/phase-1-2-llm-basics/02-chatbot.ts
 ```
 
-_(输入 `exit` 退出)_
+## 📂 项目结构
 
-#### 示例 3: Embeddings (向量)
+本项目按照学习阶段组织代码，每个阶段都有独立的目录和 README：
 
-查看文本如何转换为向量，并比较语义相似度。
+```
+src/
+├── phase-1-2-llm-basics/      # 第1-2阶段：LLM基础与提示工程
+├── phase-3-embeddings-rag/    # 第3阶段：Embeddings与RAG
+├── phase-4-agents/            # 第4阶段：Agent开发
+├── phase-5-local-models/      # 第5阶段：本地模型运行
+├── phase-6-advanced-rag/      # 第6阶段：高级RAG技术 ⭐ 当前进度
+├── phase-7-production-vectors/ # 第7阶段：生产级向量数据库（规划中）
+├── phase-8-langchain/         # 第8阶段：LangChain生态（规划中）
+├── phase-9-query-optimization/ # 第9阶段：查询优化（规划中）
+├── phase-10-frontend/         # 第10阶段：前端集成（规划中）
+├── phase-11-evaluation/       # 第11阶段：评估与监控（规划中）
+├── phase-12-production/       # 第12阶段：生产部署（规划中）
+└── utils/                     # 工具脚本
+```
+
+**重要文档**：
+
+- 📖 [ROADMAP.md](./ROADMAP.md) - 学习路线图
+- 📝 [CONCEPTS.md](./CONCEPTS.md) - 核心概念文档
+- 🗺️ [LLM_DEVELOPER_PLAN.md](./LLM_DEVELOPER_PLAN.md) - 完整学习计划（12 阶段）
+- 📁 `docs/` - 各阶段总结与测验
+
+## 🎓 按阶段学习
+
+每个阶段目录都包含独立的 README.md，详细说明该阶段的学习目标、核心概念和运行方式。
+
+### 第 1-2 阶段：LLM 基础与提示工程
 
 ```bash
-npx tsx src/03-embeddings.ts
+npx tsx src/phase-1-2-llm-basics/01-hello-gemini.ts
+npx tsx src/phase-1-2-llm-basics/02-chatbot.ts
+npx tsx src/phase-1-2-llm-basics/05-prompt-basics.ts
+npx tsx src/phase-1-2-llm-basics/06-chain-of-thought.ts
+npx tsx src/phase-1-2-llm-basics/07-structured-output.ts
 ```
 
-#### 示例 4-6: 提示词工程（Phase 2）
+查看详情：[phase-1-2-llm-basics/README.md](./src/phase-1-2-llm-basics/README.md)
 
-学习如何优化提示词以获得更好的 AI 响应。
+### 第 3 阶段：Embeddings 与 RAG
 
 ```bash
-# 基础提示词对比
-npx tsx src/05-prompt-basics.ts
-
-# 思维链（CoT）推理
-npx tsx src/06-chain-of-thought.ts
-
-# 结构化JSON输出
-npx tsx src/07-structured-output.ts
+npx tsx src/phase-3-embeddings-rag/03-embeddings.ts
+npx tsx src/phase-3-embeddings-rag/04-simple-rag.ts
 ```
 
-#### 示例 8-10: Agents 与 Function Calling（Phase 5）
+查看详情：[phase-3-embeddings-rag/README.md](./src/phase-3-embeddings-rag/README.md)
 
-学习如何让 AI 使用工具，从"聊天"到"行动"。
+### 第 4 阶段：Agent 开发
 
-````bash
-# Function Calling 基础
-npx tsx src/08-function-calling-basics.ts
+```bash
+npx tsx src/phase-4-agents/08-function-calling-basics.ts
+npx tsx src/phase-4-agents/09-weather-agent.ts
+npx tsx src/phase-4-agents/10-multi-tool-agent.ts
+```
 
-# 实用天气助手
-npx tsx src/09-weather-agent.ts
+查看详情：[phase-4-agents/README.md](./src/phase-4-agents/README.md)
 
-# 多工具智能助手
-npx tsx src/10-multi-tool-agent.ts
+### 第 5 阶段：本地模型运行
 
-### Phase 5.2: 本地 LLM (Ollama)
-
-**前提：需要先安装 Ollama**
+**前提**：需要先安装 Ollama
 
 ```bash
 # 安装 Ollama
 brew install ollama
 
-# 下载模型（推荐中文）
-ollama pull qwen2.5:7b
+# 下载模型
+ollama pull llama3.2
+ollama pull nomic-embed-text
 
 # 启动服务
 ollama serve
-````
-
-**运行示例：**
-
-```bash
-# 基础使用（文本生成）
-npx tsx src/11-ollama-basic.ts
-
-# 对话模式（多轮对话）
-npx tsx src/12-ollama-chat.ts
-
-# 本地Embeddings生成（向量搜索）
-npx tsx src/13-ollama-embeddings.ts
-
-# Function Calling模拟（Prompt Engineering）
-npx tsx src/14-ollama-function-calling.ts
 ```
 
-#### 示例 11: Web 聊天界面
-
-一个现代化的、基于 Next.js 的聊天应用，支持流式输出。
-
-**在线演示**: [https://webchat-rho-nine.vercel.app/](https://webchat-rho-nine.vercel.app/)
-
-**独立仓库**: [web-chat](https://github.com/Perlou/web-chat)
-
-本地运行：
+**运行示例**：
 
 ```bash
-cd web-chat
-npm install
-npm run dev
+npx tsx src/phase-5-local-models/11-ollama-basic.ts
+npx tsx src/phase-5-local-models/12-ollama-chat.ts
+npx tsx src/phase-5-local-models/13-ollama-embeddings.ts
+npx tsx src/phase-5-local-models/14-ollama-function-calling.ts
 ```
 
-然后打开浏览器访问 `http://localhost:3000`
+查看详情：[phase-5-local-models/README.md](./src/phase-5-local-models/README.md)
 
-## 📂 目录结构
+### 第 6 阶段：高级 RAG ⭐
 
-- `src/` - 源代码
-- `ROADMAP.md` - 学习路线图
-- `CONCEPTS.md` - 核心概念文档
+```bash
+npx tsx src/phase-6-advanced-rag/15-lancedb-basics.ts
+npx tsx src/phase-6-advanced-rag/16-hybrid-search.ts
+npx tsx src/phase-6-advanced-rag/17-reranking.ts
+```
+
+查看详情：[phase-6-advanced-rag/README.md](./src/phase-6-advanced-rag/README.md)
+
+### 第 7-12 阶段（规划中）
+
+查看完整的后续学习计划：[LLM_DEVELOPER_PLAN.md](./LLM_DEVELOPER_PLAN.md)
